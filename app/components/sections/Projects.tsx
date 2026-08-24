@@ -26,14 +26,105 @@ type Repo = {
 };
 
 const repos: Repo[] = [
-  { name: "RideRush", description: "A ride-booking platform with a modern CSS-driven UI and seamless booking experience.", language: "CSS", url: "https://github.com/shambhavi-mahi/RideRush", stars: 0, tags: ["CSS", "Frontend"], featured: false },
-  { name: "edupath-ai", description: "Smart Career Guidance Platform — helps students navigate career choices, college shortlisting, and roadmap building with AI assistance.", language: "TypeScript", url: "https://github.com/shambhavi-mahi/edupath-ai", stars: 1, tags: ["TypeScript", "React", "AI"], featured: true },
-  { name: "shellforge", description: "A custom Unix-like shell built in C with command parsing, piping, redirection, and process management.", language: "C", url: "https://github.com/shambhavi-mahi/shellforge", stars: 0, tags: ["C", "Systems", "Shell"], featured: false },
-  { name: "Placement_Predict", description: "ML-powered placement prediction tool — estimates campus placement chances based on academic and co-curricular profiles.", language: "HTML", url: "https://github.com/shambhavi-mahi/Placement_Predict", stars: 0, tags: ["HTML", "JavaScript", "ML"], featured: false },
-  { name: "Smart-Garbage-Collection", description: "Smart-city system with real-time bin monitoring, route optimization for collection vehicles, and an admin dashboard.", language: "JavaScript", url: "https://github.com/shambhavi-mahi/Smart-Garbage-Collection-System", stars: 0, tags: ["Python", "Flask", "PostgreSQL", "JavaScript"], featured: true },
-  { name: "Fed_Lab", description: "Frontend engineering lab — experimental UI components and layout explorations in vanilla JS.", language: "JavaScript", url: "https://github.com/shambhavi-mahi/Fed_Lab", stars: 0, tags: ["JavaScript", "Frontend", "CSS"], featured: false },
-  { name: "FED_Project", description: "Frontend development project showcasing responsive design patterns and modern web techniques.", language: "JavaScript", url: "https://github.com/shambhavi-mahi/FED_Project", stars: 0, tags: ["JavaScript", "CSS", "HTML"], featured: false },
-  { name: "Sports Analytics Dashboard", description: "Interactive dashboard turning raw match data into player and team-level insight with comparisons, trends, and visualizations.", language: "Java", url: "https://github.com/Jahnavi277/SportsAnalytics", stars: 1, tags: ["Java", "PostgreSQL", "JavaScript"], featured: true },
+  {
+    name: "edupath-ai",
+    description: "Smart Career Guidance Platform — AI-powered college shortlisting, career roadmap building, and curated internship feed for students.",
+    language: "TypeScript",
+    url: "https://github.com/shambhavi-mahi/edupath-ai",
+    stars: 1,
+    tags: ["TypeScript", "React", "AI", "Full-Stack"],
+    featured: true,
+  },
+  {
+    name: "RideRush",
+    description: "A ride-booking platform with a modern CSS-driven UI and seamless booking experience.",
+    language: "CSS",
+    url: "https://github.com/shambhavi-mahi/RideRush",
+    stars: 0,
+    tags: ["CSS", "Frontend", "UI"],
+    featured: false,
+  },
+  {
+    name: "SportsAnalytics",
+    description: "Interactive dashboard turning raw match data into player and team-level insight — comparisons, trends, and visualizations in one query-driven view.",
+    language: "Java",
+    url: "https://github.com/Jahnavi277/SportsAnalytics",
+    stars: 1,
+    tags: ["Java", "PostgreSQL", "JavaScript"],
+    featured: true,
+  },
+  {
+    name: "shellforge",
+    description: "A custom Unix-like shell built in C with command parsing, piping, redirection, and process management from scratch.",
+    language: "C",
+    url: "https://github.com/shambhavi-mahi/shellforge",
+    stars: 0,
+    tags: ["C", "Systems", "Shell", "OS"],
+    featured: false,
+  },
+  {
+    name: "Placement_Predict",
+    description: "ML-powered placement prediction tool — estimates campus placement chances based on academic and co-curricular profile.",
+    language: "HTML",
+    url: "https://github.com/shambhavi-mahi/Placement_Predict",
+    stars: 0,
+    tags: ["HTML", "JavaScript", "ML", "Python"],
+    featured: false,
+  },
+  {
+    name: "Smart-Garbage-Collection-System",
+    description: "Smart-city IoT system with real-time bin fill-level monitoring, route optimization for collection vehicles, and admin zone dashboard.",
+    language: "JavaScript",
+    url: "https://github.com/shambhavi-mahi/Smart-Garbage-Collection-System",
+    stars: 0,
+    tags: ["Python", "Flask", "PostgreSQL", "JavaScript"],
+    featured: true,
+  },
+  {
+    name: "Fed_Lab",
+    description: "Frontend engineering lab — experimental UI components, layout explorations, and interactive demos in vanilla JavaScript.",
+    language: "JavaScript",
+    url: "https://github.com/shambhavi-mahi/Fed_Lab",
+    stars: 0,
+    tags: ["JavaScript", "Frontend", "CSS"],
+    featured: false,
+  },
+  {
+    name: "FED_Project",
+    description: "Frontend development project showcasing responsive design patterns, animations, and modern web techniques.",
+    language: "JavaScript",
+    url: "https://github.com/shambhavi-mahi/FED_Project",
+    stars: 0,
+    tags: ["JavaScript", "CSS", "HTML", "Responsive"],
+    featured: false,
+  },
+  {
+    name: "SPA_Project",
+    description: "Single Page Application project demonstrating client-side routing, dynamic content rendering, and modular JS architecture.",
+    language: "JavaScript",
+    url: "https://github.com/shambhavi-mahi/SPA_Project",
+    stars: 0,
+    tags: ["JavaScript", "SPA", "Frontend"],
+    featured: false,
+  },
+  {
+    name: "Ecom",
+    description: "E-commerce UI built with CSS — product listings, cart layout, and responsive storefront design.",
+    language: "CSS",
+    url: "https://github.com/shambhavi-mahi/Ecom",
+    stars: 0,
+    tags: ["CSS", "HTML", "E-commerce", "UI"],
+    featured: false,
+  },
+  {
+    name: "Demo1",
+    description: "HTML prototype and demo project — early-stage UI explorations and layout experiments.",
+    language: "HTML",
+    url: "https://github.com/shambhavi-mahi/Demo1",
+    stars: 0,
+    tags: ["HTML", "CSS", "Demo"],
+    featured: false,
+  },
 ];
 
 const filters = ["All", "Featured", "TypeScript", "JavaScript", "Java", "Python", "C", "CSS", "HTML"];
@@ -55,7 +146,9 @@ export default function Projects() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <div>
-            <p className="text-sm font-mono mb-2" style={{ color: "var(--accent)" }}>03. projects</p>
+            <p className="text-sm font-mono mb-2" style={{ color: "var(--accent)" }}>
+              03. projects
+            </p>
             <h2 className="text-4xl md:text-5xl font-bold" style={{ color: "var(--foreground)" }}>
               Things I&apos;ve Built
             </h2>
@@ -171,8 +264,13 @@ export default function Projects() {
           ))}
         </div>
 
+        {/* Count display */}
+        <p className="text-center mt-6 text-sm" style={{ color: "var(--muted)" }}>
+          Showing {filtered.length} of {repos.length} repositories
+        </p>
+
         {/* GitHub CTA */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-6">
           <a
             href="https://github.com/shambhavi-mahi"
             target="_blank"
