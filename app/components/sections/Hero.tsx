@@ -242,33 +242,53 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* ── RIGHT: Transparent photo cutout — no card, no border ────────── */}
+        {/* ── RIGHT: Photo with gradient vignette ─────────────────────────── */}
         <div
           ref={photoRef}
           className="hidden lg:flex flex-1 items-end justify-center opacity-0"
-          style={{ alignSelf: "flex-end", paddingBottom: 0 }}
+          style={{ alignSelf: "flex-end" }}
         >
           <motion.div
             style={{ x: smoothX, y: smoothY }}
             animate={{ y: [0, -14, 0] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            {/* Drop shadow gives depth without a card */}
-            <div
-              style={{
-                position: "relative",
-                width: 380,
-                height: 520,
-                filter: "drop-shadow(0 24px 48px rgba(99,102,241,0.15)) drop-shadow(0 8px 20px rgba(0,0,0,0.1))",
-              }}
-            >
+            {/* Container: original photo + gradient overlays that eat the bg */}
+            <div style={{ position: "relative", width: 420, height: 540 }}>
+
+              {/* The original photo — full quality, no broken cutout */}
               <Image
-                src="/shambhavi_cutout.png"
+                src="/shambhavi.jpg"
                 alt="Shambhavi"
                 fill
-                className="object-contain object-bottom select-none"
+                className="object-cover object-top select-none"
                 priority
                 draggable={false}
+              />
+
+              {/* ── Gradient overlays — fade ALL edges into page background ── */}
+              {/* Bottom — strongest fade (hides where clothing ends) */}
+              <div className="absolute bottom-0 left-0 right-0 h-2/5 pointer-events-none"
+                style={{ background: "linear-gradient(to top, var(--background) 0%, transparent 100%)" }}
+              />
+              {/* Left edge */}
+              <div className="absolute inset-y-0 left-0 w-1/4 pointer-events-none"
+                style={{ background: "linear-gradient(to right, var(--background) 0%, transparent 100%)" }}
+              />
+              {/* Right edge */}
+              <div className="absolute inset-y-0 right-0 w-1/4 pointer-events-none"
+                style={{ background: "linear-gradient(to left, var(--background) 0%, transparent 100%)" }}
+              />
+              {/* Top edge — gentle */}
+              <div className="absolute top-0 left-0 right-0 h-1/6 pointer-events-none"
+                style={{ background: "linear-gradient(to bottom, var(--background) 0%, transparent 100%)" }}
+              />
+              {/* Radial corners — soften diagonal corners */}
+              <div className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "radial-gradient(ellipse 75% 80% at 50% 38%, transparent 45%, var(--background) 90%)",
+                }}
               />
             </div>
           </motion.div>
