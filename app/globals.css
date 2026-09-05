@@ -1,19 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600;700&family=Great+Vibes&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #0A0A0A;
-  --surface: #111111;
-  --surface-elevated: #1A1A1A;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-gold: rgba(212, 175, 55, 0.3);
-  --foreground: #E8DFD8;
-  --muted: #8C8070;
+  --background: #FFFFFF;
+  --background-alt: #F8F9FB;
+  --surface: #FFFFFF;
+  --surface-elevated: #F3F4F6;
+  --border: rgba(0, 0, 0, 0.07);
+  --foreground: #0F172A;
+  --muted: #64748B;
   --accent: #6366F1;
-  --gold: #D4AF37;
-  --gold-light: #F7E7C4;
-  --gold-dark: #9B7640;
-  --accent-glow: rgba(99, 102, 241, 0.15);
+  --accent-glow: rgba(99, 102, 241, 0.1);
   --gradient-1: #6366F1;
   --gradient-2: #8B5CF6;
   --gradient-3: #A78BFA;
@@ -26,26 +22,24 @@
   --font-mono: var(--font-geist-mono);
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Montserrat', var(--font-geist-sans), sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
   overflow-x: hidden;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--background); }
-::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #F8F9FB; }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 999px; }
 
 /* Selection */
-::selection { background: rgba(212, 175, 55, 0.2); color: var(--gold-light); }
+::selection { background: rgba(99,102,241,0.12); color: var(--foreground); }
 
-/* Gradient text utility */
+/* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
   -webkit-background-clip: text;
@@ -53,35 +47,22 @@ body {
   background-clip: text;
 }
 
-.gold-text {
-  background: linear-gradient(135deg, #F7E7C4, #D4AF37, #9B7640);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Cards */
-.glass-card {
-  background: rgba(255, 255, 255, 0.03);
+/* Premium card */
+.card {
+  background: var(--surface);
   border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+  border-radius: 16px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 4px 24px rgba(99,102,241,0.1), 0 1px 4px rgba(0,0,0,0.05);
+  transform: translateY(-3px);
 }
 
-/* Glow */
-.glow { box-shadow: 0 0 40px var(--accent-glow); }
-.gold-glow { box-shadow: 0 0 30px rgba(212, 175, 55, 0.15); }
-
-/* Blobs */
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.12;
-  pointer-events: none;
+/* Section dividers */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.15), transparent);
 }
-
-/* Font utility classes */
-.font-bebas { font-family: 'Bebas Neue', sans-serif; }
-.font-cormorant { font-family: 'Cormorant Garamond', serif; }
-.font-great-vibes { font-family: 'Great Vibes', cursive; }
-.font-montserrat { font-family: 'Montserrat', sans-serif; }

@@ -1,56 +1,48 @@
 "use client";
 
-import { GitBranch, Link2, Code2 } from "lucide-react";
+import { GitBranch, Link2, Mail } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer
-      className="py-14 px-6 bg-[#0A0A0A]"
-      style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
+      className="py-12 px-6"
+      style={{ background: "var(--background-alt)", borderTop: "1px solid var(--border)" }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Logo */}
-          <a href="#" className="font-bebas text-2xl gradient-text tracking-[0.1em]">
-            shambhavi.
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <a href="#" className="text-base font-bold gradient-text tracking-tight">
+            shambhavi.dev
           </a>
 
-          {/* Nav links */}
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {["About", "Skills", "Projects", "Contact"].map((link) => (
+          <div className="flex flex-wrap justify-center gap-8">
+            {["About", "Skills", "Projects", "Experience", "Contact"].map((l) => (
               <a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className="font-montserrat text-xs tracking-widest uppercase transition-colors duration-200"
+                key={l}
+                href={`#${l.toLowerCase()}`}
+                className="text-xs font-medium transition-colors hover:text-[var(--foreground)]"
                 style={{ color: "var(--muted)" }}
-                onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#E8DFD8")}
-                onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "var(--muted)")}
               >
-                {link}
+                {l}
               </a>
             ))}
           </div>
 
-          {/* Social */}
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
             {[
-              { icon: <GitBranch size={18} />, href: "https://github.com/shambhavi-mahi", label: "GitHub" },
-              { icon: <Link2 size={18} />, href: "https://www.linkedin.com/in/shambhavi-mahi", label: "LinkedIn" },
-              { icon: <Code2 size={18} />, href: "https://leetcode.com/Shambhavi_mahi", label: "LeetCode" },
-            ].map((s) => (
+              { icon: <GitBranch size={16} />, href: "https://github.com/shambhavi-mahi" },
+              { icon: <Link2 size={16} />, href: "https://www.linkedin.com/in/shambhavi-mahi" },
+              { icon: <Mail size={16} />, href: "mailto:shambhavimahi23@gmail.com" },
+            ].map((s, i) => (
               <motion.a
-                key={s.label}
+                key={i}
                 href={s.href}
-                target="_blank"
+                target={i < 2 ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                title={s.label}
                 whileHover={{ y: -2 }}
-                className="transition-colors duration-200"
+                className="transition-colors"
                 style={{ color: "var(--muted)" }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#E8DFD8")}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--foreground)")}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "var(--muted)")}
               >
                 {s.icon}
@@ -59,15 +51,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom */}
         <div
-          className="mt-10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}
+          className="mt-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3"
+          style={{ borderTop: "1px solid var(--border)" }}
         >
-          <p className="font-montserrat text-xs tracking-widest" style={{ color: "var(--muted)" }}>
-            © {currentYear} Shambhavi.
+          <p className="text-xs" style={{ color: "var(--muted)" }}>
+            © {new Date().getFullYear()} Shambhavi. All rights reserved.
           </p>
-          <p className="font-montserrat text-xs tracking-widest" style={{ color: "var(--muted)" }}>
+          <p className="text-xs" style={{ color: "var(--muted)" }}>
             Built with Next.js · Motion · Tailwind CSS
           </p>
         </div>
