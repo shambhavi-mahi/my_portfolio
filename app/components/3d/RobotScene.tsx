@@ -8,42 +8,35 @@ import { Suspense, useEffect, useState } from "react";
 export default function RobotScene() {
   const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  useEffect(() => { setIsMounted(true); }, []);
 
-  if (!isMounted) return <div className="w-full h-full min-h-[400px] md:min-h-[600px]" />;
+  if (!isMounted) return <div className="w-full h-full" />;
 
   return (
-    <div className="w-full h-full min-h-[400px] md:min-h-[600px] relative z-10">
-      <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
-        {/* Soft Ambient Lighting for Light Theme */}
-        <ambientLight intensity={1.2} color="#ffffff" />
-        <directionalLight position={[10, 10, 5]} intensity={1.5} color="#e0e7ff" />
-        <directionalLight position={[-10, -10, -5]} intensity={0.8} color="#e879f9" />
-        
+    <div className="w-full h-full">
+      <Canvas camera={{ position: [0, 0, 5.5], fov: 42 }} style={{ background: "transparent" }}>
+        {/* Light-theme friendly lighting */}
+        <ambientLight intensity={1.4} color="#f0f0ff" />
+        <directionalLight position={[8, 10, 5]}  intensity={2}   color="#e0e7ff" />
+        <directionalLight position={[-8, -5, -5]} intensity={0.6} color="#c4b5fd" />
+        <pointLight       position={[0, 3, 3]}    intensity={0.8} color="#a78bfa" />
+
         <Suspense fallback={null}>
-          <Float
-            speed={2} // Animation speed
-            rotationIntensity={0.15} // XYZ rotation intensity
-            floatIntensity={0.5} // Up/down float intensity
-            floatingRange={[-0.1, 0.1]} // Range of y-axis values the object will float within
-          >
+          <Float speed={1.6} rotationIntensity={0.12} floatIntensity={0.6} floatingRange={[-0.15, 0.15]}>
             <RobotModel />
           </Float>
-          
-          <ContactShadows 
-            position={[0, -1.8, 0]} 
-            opacity={0.3} 
-            scale={10} 
-            blur={2.5} 
-            far={4} 
-            color="#6366f1" 
+
+          <ContactShadows
+            position={[0, -2.0, 0]}
+            opacity={0.12}
+            scale={8}
+            blur={3}
+            far={4}
+            color="#6366f1"
           />
         </Suspense>
-        
-        {/* Adds natural subtle reflections */}
-        <Environment preset="city" />
+
+        <Environment preset="apartment" />
       </Canvas>
     </div>
   );
