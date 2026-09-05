@@ -242,29 +242,44 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* ── RIGHT: Transparent Cutout Image ─────────────────────────── */}
+        {/* ── RIGHT: Transparent Cutout Image with 3D Float ─────────────────── */}
         <div
           ref={photoRef}
           className="hidden lg:flex flex-1 items-end justify-center opacity-0 h-full"
-          style={{ alignSelf: "flex-end" }}
+          style={{ alignSelf: "flex-end", perspective: "1000px" }}
         >
+          {/* Outer container handles the mouse parallax */}
           <motion.div
             style={{ x: smoothX, y: smoothY, width: "100%", maxWidth: "480px", height: "85vh", maxHeight: "650px", position: "relative" }}
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
-            {/* The transparent cutout, styled to float cleanly */}
-            <Image
-              src="/shambhavi_cutout_final.png"
-              alt="Shambhavi"
-              fill
-              className="object-contain object-bottom select-none"
-              style={{
-                filter: "drop-shadow(0 20px 40px rgba(99,102,241,0.15)) drop-shadow(0 4px 10px rgba(0,0,0,0.08))"
+            {/* Inner container handles the continuous 3D idle float (like the robot) */}
+            <motion.div
+              style={{ width: "100%", height: "100%", position: "relative", transformStyle: "preserve-3d" }}
+              animate={{ 
+                y: [0, -16, 0],
+                rotateX: [0, 3, -3, 0], 
+                rotateY: [0, -4, 4, 0],
+                rotateZ: [0, -1.5, 1.5, 0]
               }}
-              priority
-              draggable={false}
-            />
+              transition={{ 
+                duration: 6, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+            >
+              {/* The transparent cutout */}
+              <Image
+                src="/shambhavi_cutout_final.png"
+                alt="Shambhavi"
+                fill
+                className="object-contain object-bottom select-none"
+                style={{
+                  filter: "drop-shadow(0 20px 40px rgba(99,102,241,0.15)) drop-shadow(0 4px 10px rgba(0,0,0,0.08))"
+                }}
+                priority
+                draggable={false}
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>
