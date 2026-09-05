@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* ── Light theme (default) ──────────────────────────────────────────── */
 :root {
   --background: #FFFFFF;
   --background-alt: #F8F9FB;
@@ -13,6 +14,22 @@
   --gradient-1: #6366F1;
   --gradient-2: #8B5CF6;
   --gradient-3: #A78BFA;
+}
+
+/* ── Dark theme ─────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --background: #09090B;
+  --background-alt: #111113;
+  --surface: #18181B;
+  --surface-elevated: #27272A;
+  --border: rgba(255, 255, 255, 0.08);
+  --foreground: #FAFAFA;
+  --muted: #71717A;
+  --accent: #818CF8;
+  --accent-glow: rgba(129, 140, 248, 0.12);
+  --gradient-1: #818CF8;
+  --gradient-2: #A78BFA;
+  --gradient-3: #C4B5FD;
 }
 
 @theme inline {
@@ -29,15 +46,16 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #F8F9FB; }
+::-webkit-scrollbar-track { background: var(--background); }
 ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 999px; }
 
 /* Selection */
-::selection { background: rgba(99,102,241,0.12); color: var(--foreground); }
+::selection { background: var(--accent-glow); color: var(--foreground); }
 
 /* Gradient text */
 .gradient-text {
@@ -47,20 +65,15 @@ body {
   background-clip: text;
 }
 
-/* Premium card */
+/* Card */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
   border-radius: 16px;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-.card:hover {
-  box-shadow: 0 4px 24px rgba(99,102,241,0.1), 0 1px 4px rgba(0,0,0,0.05);
-  transform: translateY(-3px);
-}
 
-/* Section dividers */
+/* Section divider */
 .section-divider {
   width: 100%;
   height: 1px;

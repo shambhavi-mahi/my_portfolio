@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, FileText } from "lucide-react";
 import { motion } from "motion/react";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "About",      href: "#about" },
@@ -54,6 +55,7 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
+          <ThemeToggle />
           <a
             href="/resume.pdf"
             target="_blank"
