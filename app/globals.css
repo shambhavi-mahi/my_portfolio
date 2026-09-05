@@ -1,13 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600;700&family=Great+Vibes&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #FAFAFA;
-  --surface: #FFFFFF;
-  --surface-elevated: #F3F4F6;
-  --border: rgba(0, 0, 0, 0.08);
-  --foreground: #111827;
-  --muted: #4B5563;
+  --background: #0A0A0A;
+  --surface: #111111;
+  --surface-elevated: #1A1A1A;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-gold: rgba(212, 175, 55, 0.3);
+  --foreground: #E8DFD8;
+  --muted: #8C8070;
   --accent: #6366F1;
+  --gold: #D4AF37;
+  --gold-light: #F7E7C4;
+  --gold-dark: #9B7640;
   --accent-glow: rgba(99, 102, 241, 0.15);
   --gradient-1: #6366F1;
   --gradient-2: #8B5CF6;
@@ -28,27 +33,17 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', var(--font-geist-sans), sans-serif;
   overflow-x: hidden;
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--accent);
-  border-radius: 3px;
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
 
 /* Selection */
-::selection {
-  background: var(--accent-glow);
-  color: var(--foreground);
-}
+::selection { background: rgba(212, 175, 55, 0.2); color: var(--gold-light); }
 
 /* Gradient text utility */
 .gradient-text {
@@ -58,29 +53,35 @@ body {
   background-clip: text;
 }
 
-/* Premium Light Card */
+.gold-text {
+  background: linear-gradient(135deg, #F7E7C4, #D4AF37, #9B7640);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Cards */
 .glass-card {
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(12px);
 }
 
-.glass-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.08);
-}
+/* Glow */
+.glow { box-shadow: 0 0 40px var(--accent-glow); }
+.gold-glow { box-shadow: 0 0 30px rgba(212, 175, 55, 0.15); }
 
-/* Glow effects */
-.glow {
-  box-shadow: 0 0 40px var(--accent-glow);
-}
-
-/* Animated gradient background blobs */
+/* Blobs */
 .blob {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.4;
+  opacity: 0.12;
   pointer-events: none;
 }
+
+/* Font utility classes */
+.font-bebas { font-family: 'Bebas Neue', sans-serif; }
+.font-cormorant { font-family: 'Cormorant Garamond', serif; }
+.font-great-vibes { font-family: 'Great Vibes', cursive; }
+.font-montserrat { font-family: 'Montserrat', sans-serif; }
