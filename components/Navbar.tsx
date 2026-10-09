@@ -79,6 +79,17 @@ export default function Navbar({ order, profileId, onSwitch }: { order: SectionI
         <div className="flex items-center gap-3">
           <button
             type="button"
+            onClick={() => {
+              document.documentElement.setAttribute('data-theme', 'light');
+              localStorage.setItem('theme', 'light');
+            }}
+            className="hidden rounded-full border border-white/15 px-4 py-1.5 text-xs font-semibold tracking-[0.05em] text-mist transition hover:border-white/30 hover:text-bone sm:flex items-center gap-2"
+            aria-label="Switch to Light Theme"
+          >
+            <span>☀️</span> Light Theme
+          </button>
+          <button
+            type="button"
             onClick={() => go('contact')}
             className="hidden rounded-full border border-white/15 px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-bone transition hover:border-crimson-2 hover:text-crimson-2 sm:block"
           >
