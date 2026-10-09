@@ -114,34 +114,35 @@ export default function Hero() {
         {/* Foreground floating elements (z-30 so it's IN FRONT of the image) */}
         <div className="relative z-30 w-full max-w-[1400px] mx-auto h-screen flex flex-col justify-between p-6 md:p-12 pointer-events-none">
           
-          {/* Top floating elements */}
+          {/* Top floating elements (Empty to maintain justify-between layout) */}
           <div className="flex flex-col md:flex-row justify-end items-start md:items-center w-full mt-[20vh] gap-6">
-            
-            {/* Right description */}
-            <div className="light-anim-desc max-w-[340px] text-left md:text-right pointer-events-auto bg-white/60 md:bg-transparent p-4 md:p-0 rounded-2xl md:rounded-none backdrop-blur-md md:backdrop-blur-none border md:border-transparent border-purple-100/50">
-              <p className="text-[13px] md:text-sm font-medium text-gray-800 leading-[1.8] tracking-wide">
-                Specialized in Full-Stack Development, Next.js, AI/ML, and building scalable software.
-              </p>
-            </div>
           </div>
 
           {/* Bottom giant text */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end w-full mb-[5vh] gap-8 md:gap-0 pointer-events-auto">
             
             {/* Bottom Left */}
-            <div className="light-anim-bottom-left flex flex-col">
-              <span 
-                className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none text-gray-900"
-                style={{ textShadow: "0 0 15px rgba(255,255,255,1), 0 0 30px rgba(255,255,255,1), 0 0 50px rgba(255,255,255,1)" }}
-              >
-                I AM
-              </span>
-              <span 
-                className="text-6xl md:text-[8rem] font-black tracking-tighter uppercase leading-[0.85] -ml-1 text-gray-900"
-                style={{ textShadow: "0 0 15px rgba(255,255,255,1), 0 0 30px rgba(255,255,255,1), 0 0 50px rgba(255,255,255,1)" }}
-              >
-                SHAMBHAVI
-              </span>
+            <div className="flex flex-col gap-6">
+              <div className="light-anim-bottom-left flex flex-col">
+                <span 
+                  className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none text-gray-900"
+                  style={{ textShadow: "0 0 15px rgba(255,255,255,1), 0 0 30px rgba(255,255,255,1), 0 0 50px rgba(255,255,255,1)" }}
+                >
+                  I AM
+                </span>
+                <span 
+                  className="text-6xl md:text-[8rem] font-black tracking-tighter uppercase leading-[0.85] -ml-1 text-gray-900"
+                  style={{ textShadow: "0 0 15px rgba(255,255,255,1), 0 0 30px rgba(255,255,255,1), 0 0 50px rgba(255,255,255,1)" }}
+                >
+                  SHAMBHAVI
+                </span>
+              </div>
+
+              <div className="light-anim-desc max-w-[340px] text-left pointer-events-auto bg-white/60 md:bg-transparent p-4 md:p-0 rounded-2xl md:rounded-none backdrop-blur-md md:backdrop-blur-none border md:border-transparent border-purple-100/50">
+                <p className="text-[13px] md:text-sm font-medium text-gray-800 leading-[1.8] tracking-wide">
+                  Specialized in Full-Stack Development, Next.js, AI/ML, and building scalable software.
+                </p>
+              </div>
             </div>
 
             {/* Bottom Right */}
@@ -168,6 +169,18 @@ export default function Hero() {
           DARK THEME: "WP Dev" Inspired Design
           ========================================================================= */}
       <div className="absolute inset-0 hidden dark:flex flex-col lg:flex-row items-center bg-[#050505]">
+        
+        {/* SVG Filter to remove the white halo from the cutout edges */}
+        <svg width="0" height="0" className="absolute">
+          <defs>
+            <filter id="choke-halo">
+              <feMorphology in="SourceAlpha" operator="erode" radius="2" result="eroded" />
+              <feGaussianBlur in="eroded" stdDeviation="0.5" result="blurredAlpha" />
+              <feComposite in="SourceGraphic" in2="blurredAlpha" operator="in" />
+            </filter>
+          </defs>
+        </svg>
+
         <div className="relative z-10 max-w-7xl mx-auto px-10 w-full flex flex-col lg:flex-row items-center min-h-screen">
           
           {/* ── LEFT: Text ── */}
@@ -216,7 +229,7 @@ export default function Hero() {
                   alt="Shambhavi"
                   fill
                   className="object-contain object-bottom object-right select-none"
-                  style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.25))" }}
+                  style={{ filter: "url(#choke-halo) drop-shadow(0 20px 40px rgba(0,0,0,0.5))" }}
                   priority
                   draggable={false}
                 />
